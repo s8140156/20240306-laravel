@@ -7,7 +7,10 @@
 	<title>Cat Index</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	{{-- <link rel="stylesheet" href="http://localhost/css/style.css"> --}}
+	{{-- <link rel="stylesheet" href="{{asset('css/style.css')}}"> --}}
 <body>
+	{{-- <h1>Hello CSS PINK!!!</h1> --}}
 
 	  <nav class="navbar navbar-expand-sm bg-light navbar-light">
 		<div class="container-fluid">
@@ -24,7 +27,7 @@
 	  <div class="container mt-3">
 		<h2>Cat List</h2>
 		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, consequatur.</p>
-		<a href="{{route('cats.create')}}">Add</a>&nbsp;&nbsp;<a href="{{route('cats.excel')}}">Excel</a>
+		<a href="{{route('cats.create')}}">Add</a>&nbsp;&nbsp;<a href="">Excel</a>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -37,17 +40,17 @@
 				<tr>
 					<td>1</td>
 					<td>Amy</td>
-					<td><a href="{{route('cats.edit')}}">edit</a>&nbsp;&nbsp;<a href="">del</a></td>
+					{{-- <td><a href="{{route('cats.edit')}}">edit</a>&nbsp;&nbsp;<a href="">del</a></td> --}}
 				</tr>
 				<tr>
 					<td>1</td>
 					<td>Amy</td>
-					<td><a href="{{route('cats.edit')}}">edit</a>&nbsp;&nbsp;<a href="">del</a></td>
+					{{-- <td><a href="{{route('cats.edit')}}">edit</a>&nbsp;&nbsp;<a href="">del</a></td> --}}
 				</tr>
 				<tr>
 					<td>1</td>
 					<td>Amy</td>
-					<td><a href="{{route('cats.edit')}}">edit</a>&nbsp;&nbsp;<a href="">del</a></td>
+					{{-- <td><a href="{{route('cats.edit')}}">edit</a>&nbsp;&nbsp;<a href="">del</a></td> --}}
 				</tr>
 			</tbody>
 		</table>

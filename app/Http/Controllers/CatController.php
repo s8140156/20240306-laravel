@@ -11,6 +11,16 @@ class CatController extends Controller
      */
     public function index()
     {
+        //$url='http://localhost/css/style.css'; //這是原本css的絕對路徑
+        //$url=asset('css/style.css');//這是laravel找他css的路徑method
+        // dd($url);
+        // $data=view('cat.index');
+        // $data=route('cats.index');
+        // dd($data);
+        // $url = route('cats.edit', ['cat' => 1]); 
+        //laravel v10目前規定id是直接寫route的單數
+        // dd($url);
+        //這邊測試一下是否接通 要用對的method
         return view('cat.index');
     }
 
@@ -27,7 +37,12 @@ class CatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        // $input = $request->except('_token');
+        // dd($input);
+        // dd('hello cat store');
+        return redirect()->route('cats.index');
+
     }
 
     /**
@@ -43,8 +58,9 @@ class CatController extends Controller
      */
     public function edit(string $id)
     {
-        dd($id);
-        return view('cat.edit');
+      
+        dd("hello $id");
+        // return view('cat.edit');
     }
 
     /**
