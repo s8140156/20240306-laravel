@@ -12,6 +12,8 @@
 <body>
 	{{-- <h1>Hello CSS PINK!!!</h1> --}}
 
+
+
 	  <nav class="navbar navbar-expand-sm bg-light navbar-light">
 		<div class="container-fluid">
 		  <ul class="navbar-nav">
@@ -24,10 +26,15 @@
 		  </ul>
 		</div>
 	  </nav>
+
+	  {{-- @php
+	  dd($data);
+	  @endphp --}}
+
 	  <div class="container mt-3">
 		<h2>Cat List</h2>
 		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, consequatur.</p>
-		<a href="{{route('cats.create')}}">Add</a>&nbsp;&nbsp;<a href="">Excel</a>
+		<a href="{{route('cats.create')}}">Add</a>&nbsp;&nbsp;<a href="{{ route('cats.excel') }}">Excel</a>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -37,21 +44,16 @@
 				</tr>
 			</thead>
 			<tbody>
+				@foreach ($data as $item)
 				<tr>
-					<td>1</td>
-					<td>Amy</td>
-					{{-- <td><a href="{{route('cats.edit')}}">edit</a>&nbsp;&nbsp;<a href="">del</a></td> --}}
+					<td>{{ $item->id }}</td>
+					<td>{{ $item->name }}</td>
+					<td>
+						<a href="{{ route('cats.edit', ['cat' => $item->id ]) }}">Edit</a> &nbsp;&nbsp;&nbsp;
+						<a href="http://">Del</a>
+					</td>
 				</tr>
-				<tr>
-					<td>1</td>
-					<td>Amy</td>
-					{{-- <td><a href="{{route('cats.edit')}}">edit</a>&nbsp;&nbsp;<a href="">del</a></td> --}}
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>Amy</td>
-					{{-- <td><a href="{{route('cats.edit')}}">edit</a>&nbsp;&nbsp;<a href="">del</a></td> --}}
-				</tr>
+				@endforeach
 			</tbody>
 		</table>
 	  </div>

@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB; //連線資料庫
 use Illuminate\Http\Request;
+use App\Models\Cat; //這邊要增加model cat
+
 
 class CatController extends Controller
 {
@@ -11,6 +13,19 @@ class CatController extends Controller
      */
     public function index()
     {
+        $data = Cat::where('id', '>', 5)->orderByDesc('id')->get();
+        return view('cat.index', ['data' => $data]);
+
+        //把資料弄成一包(看好幾個不同的db 設成一個變數而已喔 轉到前端)
+
+        // $data['cats'] = DB::select('select * from cats');
+        // $data['dogs'] = DB::select('select * from dogs');
+        // $data['test'] = '123';
+        // return view('cat.index',['data'=>$data]); 
+        // return view('cat.index',['data'=>$data, 'test'=>$test]); 
+
+        // dd($data);
+        // DB::insert('insert into cats (name, mobile, address) values (bob, 0922, 中山南路)');
         //$url='http://localhost/css/style.css'; //這是原本css的絕對路徑
         //$url=asset('css/style.css');//這是laravel找他css的路徑method
         // dd($url);
@@ -29,6 +44,7 @@ class CatController extends Controller
      */
     public function create()
     {
+        // DB::insert('insert into cats (name, mobile) values (bob, 0922)');
         return view('cat.create');
     }
 
@@ -38,7 +54,16 @@ class CatController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        // $input = $request->except('_token');
+        $input = $request->except('_token');
+        $now=now(); //設定時間
+
+        DB::table('cats')->insert([
+            'name' => $input['name'],
+            'mobile' => $input['mobile'],
+            'address' => 999,
+            'created_at' => $now,
+            'updated_at' => $now,
+        ]);
         // dd($input);
         // dd('hello cat store');
         return redirect()->route('cats.index');
